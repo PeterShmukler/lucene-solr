@@ -46,6 +46,7 @@ import org.apache.solr.client.solrj.io.stream.expr.Explanation.ExpressionType;
 import org.apache.solr.client.solrj.io.stream.expr.Expressible;
 import org.apache.solr.client.solrj.io.stream.expr.StreamExplanation;
 import org.apache.solr.client.solrj.io.stream.expr.StreamFactory;
+import org.apache.solr.client.solrj.io.stream.metrics.CMSMetric;
 import org.apache.solr.client.solrj.io.stream.metrics.CountMetric;
 import org.apache.solr.client.solrj.io.stream.metrics.MaxMetric;
 import org.apache.solr.client.solrj.io.stream.metrics.MeanMetric;
@@ -130,6 +131,7 @@ public class StreamHandler extends RequestHandlerBase implements SolrCoreAware, 
       .withFunctionName("reduce", ReducerStream.class)
       .withFunctionName("parallel", ParallelStream.class)
       .withFunctionName("rollup", RollupStream.class)
+      .withFunctionName("CMSFacet", CMSFacetStream.class)
       .withFunctionName("stats", StatsStream.class)
       .withFunctionName("innerJoin", InnerJoinStream.class)
       .withFunctionName("leftOuterJoin", LeftOuterJoinStream.class) 
@@ -180,6 +182,7 @@ public class StreamHandler extends RequestHandlerBase implements SolrCoreAware, 
       .withFunctionName("avg", MeanMetric.class)
       .withFunctionName("sum", SumMetric.class)
       .withFunctionName("count", CountMetric.class)
+      .withFunctionName("CMScount", CMSMetric.class)
       
       // tuple manipulation operations
          .withFunctionName("replace", ReplaceOperation.class)
